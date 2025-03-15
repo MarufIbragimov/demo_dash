@@ -1,8 +1,7 @@
 import json
 import pandas as pd
-from sqlalchemy import text
 import duckdb
-# from connect import set_connection
+
 
 DB_FILE = 'my.db'
 
