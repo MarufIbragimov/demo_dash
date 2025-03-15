@@ -1,7 +1,9 @@
 import duckdb
+import streamlit as st
 
 db_file = 'my.db'
 
+@st.cache_data
 def fetch_date_boundaries():
     with duckdb.connect(db_file) as duck:
         min_date, max_date = duck.query("""
@@ -13,6 +15,7 @@ def fetch_date_boundaries():
         return min_date, max_date
     
 
+@st.cache_data
 def fetch_customers(report_date):
     with open('queries/customers.sql') as f:
         custs_query = f.read().format(report_date = report_date)
